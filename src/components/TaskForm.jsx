@@ -12,7 +12,7 @@ const TaskList = () => {
   return (
     <div className="">
       <form
-        className="flex items-center py-3 px-5 bg-lightWhite rounded-md"
+        className="flex items-center py-3.5 px-5 mb-6 bg-lightWhite rounded-md"
         onSubmit={handleSubmit}
       >
         <span className="block w-4 h-4 mr-3 border border-black rounded-full"></span>
