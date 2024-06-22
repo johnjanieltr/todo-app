@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TaskContext } from "../context/TaskContext";
 
 const TaskList = () => {
   const [task, setTask] = useState("");
+  const { createTask } = useContext(TaskContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(task);
+    createTask(task);
     setTask("");
   };
 
   return (
-    <div className="">
+    <div>
       <form
         className="flex items-center py-3.5 px-5 mb-6 bg-white rounded-md"
         onSubmit={handleSubmit}
