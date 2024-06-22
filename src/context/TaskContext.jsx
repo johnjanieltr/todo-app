@@ -5,6 +5,7 @@ export const TaskContext = createContext();
 
 export const TaskContextProvider = (props) => {
   const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     setTasks(data);
@@ -25,6 +26,14 @@ export const TaskContextProvider = (props) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
+  const clearCompletedTasks = () => {
+    setTasks(tasks.filter((task) => task.isActive));
+  };
+
+  const changeTaskFilter = (filter) => {
+    setFilter(filter);
+  };
+
   const changeTaskStatus = (taskId) => {
     setTasks(
       tasks.map((task) =>
@@ -37,8 +46,11 @@ export const TaskContextProvider = (props) => {
     <TaskContext.Provider
       value={{
         tasks,
+        filter,
+        changeTaskFilter,
         createTask,
         deleteTask,
+        clearCompletedTasks,
         changeTaskStatus,
       }}
     >
