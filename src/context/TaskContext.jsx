@@ -1,9 +1,10 @@
 import { createContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import data from "../tasks";
 
 export const TaskContext = createContext();
 
-export const TaskContextProvider = (props) => {
+export const TaskContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -54,7 +55,11 @@ export const TaskContextProvider = (props) => {
         changeTaskStatus,
       }}
     >
-      {props.children}
+      {children}
     </TaskContext.Provider>
   );
+};
+
+TaskContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

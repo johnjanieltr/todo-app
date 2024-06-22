@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
+import PropTypes from 'prop-types';
 import { TaskContext } from "../context/TaskContext";
-
 
 const TaskItem = ({ task }) => {
   const {deleteTask, changeTaskStatus} = useContext(TaskContext);
@@ -42,6 +42,10 @@ const TaskItem = ({ task }) => {
       <span className="block absolute left-0 bottom-0 w-full h-px bg-light-grayishBlue-100"></span>
     </li>
   );
+};
+
+TaskItem.propTypes = {
+  task:  PropTypes.object,
 };
 
 export default TaskItem;
