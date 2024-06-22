@@ -1,14 +1,16 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { TaskContext } from "../context/TaskContext";
 
 const TaskList = () => {
   const [task, setTask] = useState("");
+  const inputRef = useRef(null);
   const { createTask } = useContext(TaskContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     createTask(task);
     setTask("");
+    inputRef.current.blur();
   };
 
   return (
@@ -20,6 +22,7 @@ const TaskList = () => {
         <span className="block w-5 h-5 mr-3 border border-light-grayishBlue-100 rounded-full cursor-pointer"></span>
         <input
           type="text"
+          ref={inputRef}
           placeholder="Create a new todo..."
           className="outline-0 text-sm bg-inherit grow text-light-grayishBlue-800"
           onChange={(e) => setTask(e.target.value)}

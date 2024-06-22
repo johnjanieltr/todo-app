@@ -15,7 +15,7 @@ const AppBackground = () => {
   }, []);
 
   return (
-    <div className="h-dvh flex flex-col bg-light-gray-50">
+    <div className="w-full h-full flex flex-col bg-light-gray-50">
       <div className="h-[35vh]">
         {isMobileVersion ? (
           <img
