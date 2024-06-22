@@ -14,8 +14,9 @@ export const TaskContextProvider = (props) => {
     setTasks([
       ...tasks,
       {
-        id: taskTitle.length,
+        id: tasks.length,
         title: taskTitle,
+        isActive: true,
       },
     ]);
   };
@@ -24,12 +25,21 @@ export const TaskContextProvider = (props) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
+  const changeTaskStatus = (taskId) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === taskId ? { ...task, isActive: !task.isActive } : task
+      )
+    );
+  };
+
   return (
     <TaskContext.Provider
       value={{
         tasks,
         createTask,
         deleteTask,
+        changeTaskStatus,
       }}
     >
       {props.children}

@@ -29,9 +29,9 @@ export default {
             900: "#181820", // Very Dark Blue
           },
         },
-        check: {
-          background: "linear-gradient(#2ceeff, #d67eff)", // Check Background
-        },
+      },
+      backgroundImage: {
+        "check-gradient": "linear-gradient(#2ceeff, #d67eff)", // Custom gradient
       },
       fontFamily: {
         josefin: ["Josefin Sans", "sans-serif"],
