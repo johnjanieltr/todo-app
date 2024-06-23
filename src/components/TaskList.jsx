@@ -23,9 +23,13 @@ const TaskList = () => {
   return (
     <div className="flex flex-col grow mb-4 rounded-md overflow-hidden bg-white">
       <ul>
-        {filteredTasks.map((task) => (
-          <TaskItem key={task.id} task={task} />
-        ))}
+        {filteredTasks.length === 0 ? (
+          <li className="mt-3 text-sm text-center text-light-grayishBlue-800">
+            No tasks to show
+          </li>
+        ) : (
+          filteredTasks.map((task) => <TaskItem key={task.id} task={task} />)
+        )}
       </ul>
       <div className="flex justify-between py-3.5 px-5 mt-auto text-sm text-light-grayishBlue-400">
         <span>{itemsLeft()} items left</span>
