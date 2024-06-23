@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import data from "../tasks";
+import { getTasks, saveTasks } from "../db/db";
 
 export const TaskContext = createContext();
 
@@ -9,8 +9,13 @@ export const TaskContextProvider = ({ children }) => {
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    setTasks(data);
+    const tasksList = getTasks();
+    tasksList ? setTasks(tasksList) : saveTasks([]);
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => saveTasks(tasks), 0);
+  }, [tasks]);
 
   const createTask = (taskTitle) => {
     setTasks([
