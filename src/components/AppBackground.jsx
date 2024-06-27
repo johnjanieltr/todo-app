@@ -19,13 +19,13 @@ const AppBackground = () => {
       <div className="h-[35vh]">
         {isMobileVersion ? (
           <img
-            src="./public/images/bg-mobile-light.jpg"
+            src="./images/bg-mobile-light.jpg"
             alt="image"
             className="w-full h-full object-cover"
           />
         ) : (
           <img
-            src="./public/images/bg-desktop-light.jpg"
+            src="./images/bg-desktop-light.jpg"
             alt="image"
             className="w-full h-full object-cover"
           />
