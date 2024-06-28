@@ -53,6 +53,7 @@ export const TaskContextProvider = ({ children }) => {
     <TaskContext.Provider
       value={{
         tasks,
+        setTasks,
         filter,
         changeTaskFilter,
         createTask,
