@@ -15,13 +15,13 @@ const AppBackground = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col bg-light-gray-50">
-      <div className="h-[35vh]">
+    <div className="w-full h-full flex flex-col bg-light-gray-50 dark:bg-dark-blue-900">
+      <div className="h-[30vh] md:h-[35vh]">
         {isMobileVersion ? (
           <img
             src="./images/bg-mobile-light.jpg"
             alt="image"
-            className="w-full h-full object-cover"
+            className="w-full h-full min-h-32 object-cover"
           />
         ) : (
           <img
@@ -31,7 +31,7 @@ const AppBackground = () => {
           />
         )}
       </div>
-      <div className="h-[65vh] bg-light-gray-50"></div>
+      <div className="h-[70vh] md:h-[65vh]"></div>
     </div>
   );
 };

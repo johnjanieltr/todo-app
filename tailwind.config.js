@@ -23,10 +23,11 @@ export default {
           blue: {
             50: "#e3e4f1", // Light Grayish Blue (hover)
             100: "#d8dee9", // Light Grayish Blue
-            500: "#68757d", // Dark Grayish Blue
-            825: "#3a3b41", // Very Dark Grayish Blue
-            800: "#252c35", // Very Dark Desaturated Blue
-            850: "#2a2c32", // Very Dark Grayish Blue (additional)
+            300: "#68757d", // Dark Grayish Blue
+            500: "#3a3b41", // Very Dark Grayish Blue
+            600: "#37394e", // Very Dark Grayish Blue (line)
+            700: "#2a2c32", // Very Dark Grayish Blue (additional)
+            800: "#25273c", // Very Dark Desaturated Blue
             900: "#181820", // Very Dark Blue
           },
         },

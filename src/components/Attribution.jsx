@@ -1,7 +1,9 @@
 const Attribution = () => {
+  const spanStyle = "block text-black dark:text-dark-blue-100";
+
   return (
-    <div className="py-4 px-4 text-xs text-center bg-light-gray-50">
-      <span className="block">
+    <div className="pt-4 py-8 px-4 text-xs text-center bg-light-gray-50 dark:bg-dark-blue-900">
+      <span className={spanStyle}>
         Challenge by{" "}
         <a
           href="https://www.frontendmentor.io?ref=challenge"
@@ -12,7 +14,7 @@ const Attribution = () => {
           Frontend Mentor.
         </a>
       </span>
-      <span className="block">
+      <span className={spanStyle}>
         Coded by{" "}
         <a
           href="https://github.com/johnjanieltr"
