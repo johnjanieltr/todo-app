@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { getTasks, saveTasks } from "../db/db";
+import uniqueIdGenerator from "../utils/uniqueIdGenerator";
 
 export const TaskContext = createContext();
 
@@ -21,9 +22,9 @@ export const TaskContextProvider = ({ children }) => {
     setTasks([
       ...tasks,
       {
-        id: tasks.length,
+        id: uniqueIdGenerator(tasks),
         title: taskTitle,
-        isActive: true,
+        isCompleted: false,
       },
     ]);
   };
@@ -33,7 +34,7 @@ export const TaskContextProvider = ({ children }) => {
   };
 
   const clearCompletedTasks = () => {
-    setTasks(tasks.filter((task) => task.isActive));
+    setTasks(tasks.filter((task) => !task.isCompleted));
   };
 
   const changeTaskFilter = (filter) => {
@@ -43,7 +44,7 @@ export const TaskContextProvider = ({ children }) => {
   const changeTaskStatus = (taskId) => {
     setTasks(
       tasks.map((task) =>
-        task.id === taskId ? { ...task, isActive: !task.isActive } : task
+        task.id === taskId ? { ...task, isCompleted: !task.isCompleted } : task
       )
     );
   };

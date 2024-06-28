@@ -7,15 +7,15 @@ const TaskList = () => {
 
   const filteredTasks = tasks.filter((task) => {
     if (filter === "all") return true;
-    if (filter === "active") return task.isActive;
-    if (filter === "completed") return !task.isActive;
+    if (filter === "active") return !task.isCompleted;
+    if (filter === "completed") return task.isCompleted;
     return true;
   });
 
   const itemsLeft = () => {
     let itemsLeft = 0;
     tasks.forEach((task) => {
-      if (task.isActive) itemsLeft++;
+      if (!task.isCompleted) itemsLeft++;
     });
     return itemsLeft;
   };
