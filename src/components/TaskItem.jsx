@@ -2,7 +2,8 @@ import { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { TaskContext } from "../context/TaskContext";
+
+import { TaskContext } from "../context/taskContext";
 import iconCheck from "../assets/icons/icon-check.svg";
 import iconCross from "../assets/icons/icon-cross.svg";
 

@@ -5,7 +5,8 @@ import {
   verticalListSortingStrategy,
   arrayMove,
 } from "@dnd-kit/sortable";
-import { TaskContext } from "../context/TaskContext";
+
+import { TaskContext } from "../context/taskContext";
 import TaskItem from "./TaskItem";
 
 const TaskList = () => {

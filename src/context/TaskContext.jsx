@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+
 import { getTasks, saveTasks } from "../db/db";
 import uniqueIdGenerator from "../utils/uniqueIdGenerator";
 
 export const TaskContext = createContext();
 
-export const TaskContextProvider = ({ children }) => {
+export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -67,6 +68,6 @@ export const TaskContextProvider = ({ children }) => {
   );
 };
 
-TaskContextProvider.propTypes = {
+TaskProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };

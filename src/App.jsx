@@ -1,14 +1,18 @@
+import { ThemeProvider } from "./context/themeContext";
+import { TaskProvider } from "./context/taskContext";
 import AppBackground from "./components/AppBackground";
 import Attribution from "./components/Attribution";
 import TaskComponent from "./components/TaskComponent";
 
 const App = () => {
   return (
-    <>
-      <TaskComponent />
-      <AppBackground />
-      <Attribution />
-    </>
+    <ThemeProvider>
+      <TaskProvider>
+        <TaskComponent />
+        <AppBackground />
+        <Attribution />
+      </TaskProvider>
+    </ThemeProvider>
   );
 };
 
