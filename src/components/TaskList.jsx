@@ -51,11 +51,9 @@ const TaskList = () => {
           onDragEnd={handleDragEnd}
         >
           <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
-            <ul className="overflow-y-auto">
-              {filteredTasks.map((task) => (
-                <TaskItem key={task.id} task={task} />
-              ))}
-            </ul>
+            {filteredTasks.map((task) => (
+              <TaskItem key={task.id} task={task} />
+            ))}
           </SortableContext>
         </DndContext>
       )}
