@@ -18,7 +18,11 @@ const TaskList = () => {
       className="flex items-center py-3.5 px-5 mb-6 bg-white dark:bg-dark-blue-800 rounded-md shadow-lg md:py-4 md:px-6"
       onSubmit={handleSubmit}
     >
-      <span className="block w-5 h-5 mr-3 border border-light-grayishBlue-100 dark:border-dark-blue-300 rounded-full cursor-pointer"></span>
+      <button
+        type="button"
+        onClick={() => inputRef.current.focus()}
+        className="block w-5 h-5 mr-3 border border-light-grayishBlue-100 dark:border-dark-blue-300 rounded-full cursor-pointer"
+      ></button>
       <input
         type="text"
         ref={inputRef}
