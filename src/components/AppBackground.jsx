@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "../context/themeContext";
 
 const AppBackground = () => {
+  const { isDarkMode } = useContext(ThemeContext);
   const [isMobileVersion, setIsMobileVersion] = useState(
-    window.innerWidth < 640
+    window.innerWidth < 600
   );
 
   useEffect(() => {
@@ -17,7 +19,21 @@ const AppBackground = () => {
   return (
     <div className="w-full h-full flex flex-col bg-light-gray-50 dark:bg-dark-blue-900">
       <div className="h-[30vh] md:h-[35vh]">
-        {isMobileVersion ? (
+        {isDarkMode ? (
+          isMobileVersion ? (
+            <img
+              src="./images/bg-mobile-dark.jpg"
+              alt="image"
+              className="w-full h-full min-h-32 object-cover"
+            />
+          ) : (
+            <img
+              src="./images/bg-desktop-dark.jpg"
+              alt="image"
+              className="w-full h-full object-cover"
+            />
+          )
+        ) : isMobileVersion ? (
           <img
             src="./images/bg-mobile-light.jpg"
             alt="image"
