@@ -2,6 +2,7 @@ import TaskHeader from "./TaskHeader";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 import TaskFooter from "./TaskFooter";
+import DndMessage from "./DndMessage";
 
 const TaskComponent = () => {
   return (
@@ -10,6 +11,7 @@ const TaskComponent = () => {
       <TaskForm />
       <TaskList />
       <TaskFooter />
+      <DndMessage />
     </main>
   );
 };
