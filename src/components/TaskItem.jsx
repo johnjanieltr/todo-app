@@ -2,27 +2,20 @@ import { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-
 import { TaskContext } from "../context/taskContext";
-import iconCheck from "../assets/icons/icon-check.svg";
-import iconCross from "../assets/icons/icon-cross.svg";
+import checkIcon from "../assets/icons/check-icon.svg";
+import crossIcon from "../assets/icons/cross-icon.svg";
 
 const TaskItem = ({ task }) => {
   const { deleteTask, changeTaskStatus } = useContext(TaskContext);
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
-    useSortable({ id: task.id });
-
-  const buttonBasicStyles =
-    "flex justify-center items-center w-5 h-5 mr-3 border border-light-grayishBlue-100 dark:border-dark-blue-300 rounded-full cursor-pointer";
-  const buttonActiveStyle = buttonBasicStyles + " bg-inherit";
-  const buttonInactiveStyle = buttonBasicStyles + " bg-check-gradient";
-
-  const style = {
-    transform: CSS.Transform.toString(transform),
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
     transition,
-    zIndex: isDragging ? 1000 : 'auto',
-    touchAction: 'none' // evita el desplazamiento de la página durante el arrastre (dispositivos táctiles)
-  };
+    isDragging,
+  } = useSortable({ id: task.id });
 
   useEffect(() => {
     // evitar el scroll mientras se arrastra (dispositivos táctiles)
@@ -31,11 +24,18 @@ const TaskItem = ({ task }) => {
         e.preventDefault();
       }
     };
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
     return () => {
-      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [isDragging]);
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 1000 : "auto",
+    touchAction: "none",
+  };
 
   return (
     <>
@@ -44,44 +44,46 @@ const TaskItem = ({ task }) => {
         ref={setNodeRef}
         {...attributes}
         {...listeners}
-        className={`relative flex justify-between items-center py-3.5 px-5 bg-white dark:bg-dark-blue-800 ${isDragging ? 'shadow-lg' : ''}`}
+        className={`relative flex justify-between items-center py-3.5 px-5 md:py-4 bg-white dark:bg-dark-blue-800 ${
+          isDragging ? "shadow-lg" : ""
+        }`}
       >
         <div className="flex items-center">
           <button
             type="button"
-            className={
-              !task.isCompleted ? buttonActiveStyle : buttonInactiveStyle
-            }
             onClick={() => {
               changeTaskStatus(task.id);
             }}
             onPointerDown={(e) => e.preventDefault()}
+            className={`flex justify-center items-center w-5 h-5 mr-3 md:mr-4 border border-light-grayishBlue-100 dark:border-dark-blue-300 rounded-full cursor-pointer select-none ${
+              !task.isCompleted ? "bg-inherit" : "bg-check-gradient"
+            }`}
           >
             <img
-              src={iconCheck}
+              src={checkIcon}
               alt="Icon check"
               className={!task.isCompleted ? "w-3 h-2 hidden" : "w-3 h-2 block"}
             />
           </button>
           <p
-            className={
+            className={`mt-0.5 text-sm md:mt-1 md:text-base font-medium ${
               !task.isCompleted
-                ? "mt-0.5 text-sm text-light-grayishBlue-800 dark:text-dark-blue-100 md:text-base"
-                : "mt-0.5 text-sm line-through text-light-grayishBlue-100 dark:text-dark-blue-300 md:text-base"
-            }
+                ? "text-light-grayishBlue-800 dark:text-dark-blue-100"
+                : "line-through text-light-grayishBlue-100 dark:text-dark-blue-300 "
+            }`}
           >
             {task.title}
           </p>
         </div>
         <button
           type="button"
-          className="cursor-pointer"
           onClick={() => {
             deleteTask(task.id);
           }}
           onPointerDown={(e) => e.preventDefault()}
+          className="cursor-pointer select-none"
         >
-          <img src={iconCross} alt="Icon cross" className="w-3.5 h-3.5" />
+          <img src={crossIcon} alt="Icon cross" className="w-3.5 h-3.5" />
         </button>
       </div>
       <span className="block w-full h-px bg-light-grayishBlue-100 dark:bg-dark-blue-600"></span>

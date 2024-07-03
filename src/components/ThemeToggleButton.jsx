@@ -1,23 +1,21 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/themeContext";
-import iconMoon from "../assets/icons/icon-moon.svg";
-import iconSun from "../assets/icons/icon-sun.svg";
+import moonIcon from "../assets/icons/moon-icon.svg";
+import sunIcon from "../assets/icons/sun-icon.svg";
 
 const ThemeToggleButton = () => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
+  const buttonImgStyle = "w-7 h-7 cursor-pointer select-none";
+
   return (
-    <span onClick={() => toggleTheme()}>
-      {isDarkMode ? (
-        <img src={iconSun} alt="Icon sun" className="cursor-pointer w-7 h-7" />
-      ) : (
-        <img
-          src={iconMoon}
-          alt="Icon moon"
-          className="cursor-pointer w-7 h-7"
-        />
-      )}
-    </span>
+    <button type="button" onClick={() => toggleTheme()}>
+      <img
+        src={isDarkMode ? sunIcon : moonIcon}
+        alt={isDarkMode ? "Sun icon" : "Moon icon"}
+        className={buttonImgStyle}
+      />
+    </button>
   );
 };
 

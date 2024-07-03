@@ -16,34 +16,31 @@ const AppBackground = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const mobileImageStyle = "w-full h-full min-h-32 object-cover";
+  const desktopImageStyle = "w-full h-full object-cover";
+
   return (
     <div className="w-full h-full flex flex-col bg-light-gray-50 dark:bg-dark-blue-900">
-      <div className="h-[30vh] md:h-[35vh]">
+      <div className="h-[30vh] md:h-[35vh] pointer-events-none select-none">
         {isDarkMode ? (
-          isMobileVersion ? (
-            <img
-              src="./images/bg-mobile-dark.jpg"
-              alt="image"
-              className="w-full h-full min-h-32 object-cover"
-            />
-          ) : (
-            <img
-              src="./images/bg-desktop-dark.jpg"
-              alt="image"
-              className="w-full h-full object-cover"
-            />
-          )
-        ) : isMobileVersion ? (
           <img
-            src="./images/bg-mobile-light.jpg"
-            alt="image"
-            className="w-full h-full min-h-32 object-cover"
+            src={
+              isMobileVersion
+                ? "./images/bg-mobile-dark.jpg"
+                : "./images/bg-desktop-dark.jpg"
+            }
+            alt="Background image"
+            className={isMobileVersion ? mobileImageStyle : desktopImageStyle}
           />
         ) : (
           <img
-            src="./images/bg-desktop-light.jpg"
-            alt="image"
-            className="w-full h-full object-cover"
+            src={
+              isMobileVersion
+                ? "./images/bg-mobile-light.jpg"
+                : "./images/bg-desktop-light.jpg"
+            }
+            alt="Background image"
+            className={isMobileVersion ? mobileImageStyle : desktopImageStyle}
           />
         )}
       </div>

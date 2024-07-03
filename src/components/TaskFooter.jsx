@@ -13,6 +13,10 @@ const TaskFooter = () => {
     return itemsLeft;
   };
 
+  const buttonActiveStyle = "select-none text-primary-600";
+  const buttonInactiveStyle =
+    "select-none text-light-grayishBlue-400 dark:text-dark-blue-300";
+
   return (
     <>
       <div className="flex justify-between py-3.5 px-5 mb-6 rounded-b-md text-xs shadow-md text-light-grayishBlue-400 dark:text-dark-blue-300 bg-white dark:bg-dark-blue-800 md:mb-10 md:text-sm md:shadow-lg">
@@ -21,9 +25,7 @@ const TaskFooter = () => {
           <button
             type="button"
             className={
-              filter === "all"
-                ? "text-primary-600"
-                : "text-light-grayishBlue-400 dark:text-dark-blue-300"
+              filter === "all" ? buttonActiveStyle : buttonInactiveStyle
             }
             onClick={() => changeTaskFilter("all")}
           >
@@ -32,9 +34,7 @@ const TaskFooter = () => {
           <button
             type="button"
             className={
-              filter === "active"
-                ? "text-primary-600"
-                : "text-light-grayishBlue-400 dark:text-dark-blue-300"
+              filter === "active" ? buttonActiveStyle : buttonInactiveStyle
             }
             onClick={() => changeTaskFilter("active")}
           >
@@ -43,17 +43,18 @@ const TaskFooter = () => {
           <button
             type="button"
             className={
-              filter === "completed"
-                ? "text-primary-600"
-                : "text-light-grayishBlue-400 dark:text-dark-blue-300"
+              filter === "completed" ? buttonActiveStyle : buttonInactiveStyle
             }
             onClick={() => changeTaskFilter("completed")}
           >
             Completed
           </button>
         </div>
-
-        <button type="button" onClick={() => clearCompletedTasks()}>
+        <button
+          type="button"
+          onClick={() => clearCompletedTasks()}
+          className="select-none"
+        >
           Clear Completed
         </button>
       </div>
@@ -62,9 +63,7 @@ const TaskFooter = () => {
           <button
             type="button"
             className={
-              filter === "all"
-                ? "text-primary-600"
-                : "text-light-grayishBlue-400 dark:text-dark-blue-300"
+              filter === "all" ? buttonActiveStyle : buttonInactiveStyle
             }
             onClick={() => changeTaskFilter("all")}
           >
@@ -73,9 +72,7 @@ const TaskFooter = () => {
           <button
             type="button"
             className={
-              filter === "active"
-                ? "text-primary-600"
-                : "text-light-grayishBlue-400 dark:text-dark-blue-300"
+              filter === "active" ? buttonActiveStyle : buttonInactiveStyle
             }
             onClick={() => changeTaskFilter("active")}
           >
@@ -84,9 +81,7 @@ const TaskFooter = () => {
           <button
             type="button"
             className={
-              filter === "completed"
-                ? "text-primary-600"
-                : "text-light-grayishBlue-400 dark:text-dark-blue-300"
+              filter === "completed" ? buttonActiveStyle : buttonInactiveStyle
             }
             onClick={() => changeTaskFilter("completed")}
           >
