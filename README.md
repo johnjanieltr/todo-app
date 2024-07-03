@@ -4,7 +4,7 @@
 
 ## Descripción del desafió
 
-Esta es mi solución para el desafió [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). 
+Esta es mi solución para el desafió [Todo app challenge de Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). 
 
 Los usuarios deberían poder:
 
